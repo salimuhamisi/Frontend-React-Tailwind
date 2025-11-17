@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext"
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const navigate = useNavigate();
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow p-4">
@@ -12,8 +14,21 @@ const Navbar = () => {
           React + Tailwind App
         </h1>
 
-        <Button onClick={toggleTheme} variant="secondary" size="sm">
-          Toggle {theme === "light" ? "Dark" : "Light"}
+        <Button
+          onClick={() => navigate("/")}
+          variant="secondary"
+          size="sm"
+        >
+          TASK MANAGER
+        </Button>
+
+
+        <Button
+          onClick={() => navigate("/api")}
+          variant="secondary"
+          size="sm"
+        >
+          FETCH API DATA
         </Button>
       </div>
     </nav>
